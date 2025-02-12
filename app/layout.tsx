@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import { authOptions } from './api/auth/[...nextauth]/auth';  // Changed from /route to /auth
 import AuthProvider from '@/components/AuthProvider';
 import { Toaster } from '@/components/ui/toaster';
 

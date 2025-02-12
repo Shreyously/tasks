@@ -2,7 +2,7 @@
 
 import { PrismaClient } from '@prisma/client';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/auth';  // Changed from /route to /auth
 import { revalidatePath } from 'next/cache';
 
 // Create a singleton instance of PrismaClient
