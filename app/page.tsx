@@ -109,7 +109,7 @@ export default function Home() {
       const result = await createTask(formData);
       
       if (result.task) {
-        setTasks([result.task, ...tasks]);
+        setTasks([result.task as Task, ...tasks]);
         setIsAddDialogOpen(false);
         toast({
           title: "Success",
@@ -139,7 +139,7 @@ export default function Home() {
     const result = await updateTask(taskId, formData);
     
     if (result.task) {
-      setTasks(tasks.map(task => task.id === taskId ? result.task : task));
+      setTasks(tasks.map(task => task.id === taskId ? result.task as Task : task));
       setEditingTask(null);
       toast({
         title: "Success",

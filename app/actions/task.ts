@@ -14,6 +14,18 @@ const prisma = globalForPrisma.prisma ?? new PrismaClient();
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
+interface Task {
+  id: string;
+  title: string;
+  description: string | null;
+  dueDate: Date | null;
+  priority: 'low' | 'medium' | 'high';
+  status: 'incomplete' | 'in-progress' | 'complete';
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+}
+
 export async function getTasks() {
   try {
     const session = await getServerSession(authOptions);
@@ -29,7 +41,7 @@ export async function getTasks() {
       orderBy: {
         createdAt: 'desc',
       },
-    });
+    }) as Task[];  // Add type assertion here
 
     return { tasks };
   } catch (error) {
